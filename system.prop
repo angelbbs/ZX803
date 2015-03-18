@@ -1,8 +1,10 @@
-ro.sf.lcd_density=160
+ro.sf.lcd_density=240
+ro.build.characteristics=phone
+qemu.hw.mainkeys=1
 
-persist.sys.timezone=Europe/London
-persist.sys.language=en
-persist.sys.country=GB
+persist.sys.timezone=Europe/Moscow
+persist.sys.language=ru
+persist.sys.country=RU
 
 # CM 11 bootloop fix
 ro.zygote.disable_gl_preload=1
@@ -47,5 +49,5 @@ ro.device.cpu=1.0 GHz AllWinner A10
 ro.device.gpu=ARM Mali 400
 ro.device.rear_cam=2 MP
 ro.device.front_cam=0.3 MP
-ro.device.screen_res=1024x768
+ro.device.screen_res=800x480
 ro.chip_type=a10
