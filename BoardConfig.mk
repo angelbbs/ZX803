@@ -135,13 +135,13 @@ CONFIG_DRIVER_WEXT               :=y
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_rtl
 BOARD_HOSTAPD_DRIVER             := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_rtl
-BOARD_WLAN_DEVICE                := rtl8188eu
-SW_BOARD_USR_WIFI                := rtl8188eu
+BOARD_WLAN_DEVICE                := rtl8192cu
+SW_BOARD_USR_WIFI                := rtl8192cu
 
-WIFI_DRIVER               := rtl8188eu
-WIFI_DRIVER_MODULE_NAME   := "8188eu"
+WIFI_DRIVER               := rtl8192cu
+WIFI_DRIVER_MODULE_NAME   := "8192cu"
 WIFI_DRIVER_FW_PATH_STA   := none
-WIFI_DRIVER_MODULE_PATH   := "/system/lib/modules/8188eu.ko"
+WIFI_DRIVER_MODULE_PATH   := "/system/lib/modules/8192cu.ko"
 WIFI_DRIVER_MODULE_ARG    := "ifname=wlan0"
 
 WIFI_FIRMWARE_LOADER      := ""

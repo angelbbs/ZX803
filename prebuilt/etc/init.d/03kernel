@@ -12,3 +12,9 @@ echo "3" > /proc/sys/vm/dirty_background_ratio
 echo "2048,4096,51200,56320,61440,70400" > /sys/module/lowmemorykiller/parameters/minfree
 
 echo "done Virtual Memory Parameter Tweaks"
+
+busybox sysctl -w vm.swappiness=90
+echo '1' > /sys/block/zram0/reset
+echo $((256*1024*1024)) > /sys/block/zram0/disksize
+busybox mkswap /dev/block/zram0
+busybox swapon /dev/block/zram0
