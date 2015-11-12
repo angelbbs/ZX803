@@ -1,20 +1,50 @@
 #!/system/bin/sh
 #
 
+## 3
 echo "3" > /proc/sys/vm/drop_caches
+
+## 20
 echo "20" > /proc/sys/vm/swappiness
+
+## 15
 echo "15" > /proc/sys/vm/dirty_ratio
+
+##70
 echo "70" > /proc/sys/vm/vfs_cache_pressure
+
+## 3000
 echo "3000" > /proc/sys/vm/dirty_expire_centisecs
+
+## 500
 echo "500" > /proc/sys/vm/dirty_writeback_centisecs
+
+## 3
 echo "3" > /proc/sys/vm/dirty_background_ratio
 
-echo "2048,4096,51200,56320,61440,70400" > /sys/module/lowmemorykiller/parameters/minfree
+##cat /sys/module/lowmemorykiller/parameters/minfree
+##2048,3413,5461,6827,8192,9557
+## 4352,5760,7168,9216,10624,12800
+##echo "2048,4096,51200,56320,61440,70400" > /sys/module/lowmemorykiller/parameters/minfree
+##echo "2048,4096,8192,16384,32768,65536" > /sys/module/lowmemorykiller/parameters/minfree
+##echo "2048,3413,5461,6827,8192,9557" > /sys/module/lowmemorykiller/parameters/minfree
+##echo "2048,3413,51200,56320,61440,70400" > /sys/module/lowmemorykiller/parameters/minfree
+echo "4352,5760,7168,9216,10624,12800" > /sys/module/lowmemorykiller/parameters/minfree
 
 echo "done Virtual Memory Parameter Tweaks"
 
-busybox sysctl -w vm.swappiness=90
+echo performance > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+
+## 2692
+##echo "4096" > /proc/sys/vm/min_free_kbytes
+##echo 2 > /proc/sys/vm/overcommit_memory
+echo 8192 > /proc/sys/vm/min_free_kbytes
+
+#busybox sysctl -w vm.swappiness=30
 echo '1' > /sys/block/zram0/reset
 echo $((256*1024*1024)) > /sys/block/zram0/disksize
 busybox mkswap /dev/block/zram0
-busybox swapon /dev/block/zram0
+busybox swapon /dev/block/zram0 -p 1000
+
+#busybox mkswap /dev/block/nandi
+#busybox swapon /dev/block/nandi -p 1
