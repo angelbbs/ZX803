@@ -18,6 +18,7 @@ PRODUCT_COPY_FILES += \
 	$(call find-copy-subdir-files,*,$(COMMON_PATH)/prebuilt/app,system/app) \
 	$(call find-copy-subdir-files,*,$(COMMON_PATH)/prebuilt/bin,system/bin) \
 	$(call find-copy-subdir-files,*,$(COMMON_PATH)/prebuilt/xbin,system/xbin) \
+	$(call find-copy-subdir-files,*,$(COMMON_PATH)/prebuilt/config,system/config) \	
 	$(call find-copy-subdir-files,*,$(COMMON_PATH)/prebuilt/usr/idc,system/usr/idc) \
 	$(call find-copy-subdir-files,*,$(COMMON_PATH)/prebuilt/usr/keylayout,system/usr/keylayout) \
 	$(call find-copy-subdir-files,*,$(COMMON_PATH)/prebuilt/lib,system/lib) \

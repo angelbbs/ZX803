@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+  <application>
+            
+       <P903>
+          <fmPort>9058</fmPort>
+          <setPort>9083</setPort>
+          <mcuPort>9010</mcuPort>  
+      </P903>
+
+
+    
+       <carGroup>
+           <max_groups>1</max_groups>
+           <max_members>10</max_members>
+           <scan_mem>60000</scan_mem>
+       </carGroup>	
+	
+	
+	   <manager>
+			<appName7></appName7>
+			<appName8></appName8>
+			<appName9></appName9>
+			<appName10></appName10>
+	   </manager>
+  </application>
