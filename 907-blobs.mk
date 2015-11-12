@@ -19,8 +19,11 @@ PRODUCT_COPY_FILES += \
 	$(call find-copy-subdir-files,*,$(COMMON_PATH)/prebuilt/xbin,system/xbin) \
 	$(call find-copy-subdir-files,*,$(COMMON_PATH)/prebuilt/usr/idc,system/usr/idc) \
 	$(call find-copy-subdir-files,*,$(COMMON_PATH)/prebuilt/usr/keylayout,system/usr/keylayout) \
+	$(call find-copy-subdir-files,*,$(COMMON_PATH)/prebuilt/lib,system/lib) \
 	$(call find-copy-subdir-files,*,$(COMMON_PATH)/prebuilt/lib/modules,system/lib/modules) \
+	$(call find-copy-subdir-files,*,$(COMMON_PATH)/prebuilt/lib/bluez-plugin,system/lib/bluez-plugin) \
 	$(call find-copy-subdir-files,*,$(COMMON_PATH)/prebuilt/etc/init.d,system/etc/init.d) \
+	$(call find-copy-subdir-files,*,$(COMMON_PATH)/prebuilt/etc/wifi.d,system/etc/wifi.d) \
 	$(call find-copy-subdir-files,*,$(COMMON_PATH)/prebuilt/etc/usb_modeswitch.d,system/etc/usb_modeswitch.d) \
 
 # /system/etc
