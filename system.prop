@@ -1,6 +1,7 @@
 ro.sf.lcd_density=240
+# ro.build.characteristics=phone
 qemu.hw.mainkeys=1
-ro.memopt.disable=false
+ro.memopt.disable = false
 
 persist.sys.timezone=Europe/Moscow
 persist.sys.language=ru
@@ -14,7 +15,7 @@ sys.disable_ext_animation=1
 debug.hwui.render_dirty_regions=false
 
 wifi.interface=wlan0
-wifi.supplicant_scan_interval=60
+wifi.supplicant_scan_interval=15
 
 # Disable StrictMode
 persist.sys.strictmode.visual=0
@@ -40,10 +41,15 @@ ro.wifidisplay.switch=1
 ro.property.tabletUI=false
 ro.product.firmware=v1.2
 ro.property.fontScale=1.15
+ro.sf.hwrotation=0
+persist.sys.shutdown.mode=hibernate
+ro.config.hw_quickpoweron=true
+ro.ril.enable.sync.time=1
+
 
 # RIL config
-rild.libpath=/system/lib/libsoftwinner-ril.so
-rild.libargs=-d /dev/ttyUSB2
+#rild.libpath=/system/lib/libsoftwinner-ril.so
+#rild.libargs=-d /dev/ttyUSB2
 
 # Hardware info
 ro.device.cpu=1.0 GHz AllWinner A10
