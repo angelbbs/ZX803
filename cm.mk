@@ -25,17 +25,17 @@ $(call inherit-product, vendor/cm/config/gsm.mk)
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_NAME := cm_907
-PRODUCT_BRAND := Google
+PRODUCT_BRAND := ZXNET
 PRODUCT_DEVICE := 907
-PRODUCT_MODEL := Nexus 7
-PRODUCT_MANUFACTURER := Asus
+PRODUCT_MODEL := ZX803
+PRODUCT_MANUFACTURER := zxnet
 PRODUCT_RELEASE_NAME := 907
 
 UTC_DATE := $(shell date +%s)
 DATE     := $(shell date +%Y%m%d)
 
 #Set build fingerprint / ID / Product Name ect.
-PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=nakasi TARGET_DEVICE=grouper BUILD_FINGERPRINT="google/nakasi/grouper:4.4.2/KOT49H/402395:user/release-keys" PRIVATE_BUILD_DESC="nakasi-user 4.4.2 KOT49H 402395 release-keys"
+PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=zxnet TARGET_DEVICE=zx803 BUILD_FINGERPRINT="angelbbs/zxnet/zx803:4.4.4/KOT49H/402395:user/release-keys" PRIVATE_BUILD_DESC="zx803-user 4.4.4 KOT49H 402395 release-keys"
 
 # Allow ADB (to access dev settings)
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.adb.secure=0 ro.secure=0 ro.allow.mock.location=1 service.adb.enable=1 persist.sys.usb.config=mass_storage ro.debuggable=1 persist.service.adb.enable=1 rild.libpath=/system/lib/libsoftwinner-ril.so
