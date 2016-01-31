@@ -4,6 +4,9 @@
 
 BUSYBOX="/system/bin/busybox"
 
+chmod 6755 /system/xbin/su
+chmod 777 /data/zxnet_sys.log
+
 #echo "4096" > /sys/devices/virtual/bdi/7:4/read_ahead_kb
 #echo "4096" > /sys/devices/virtual/bdi/179:0/read_ahead_kb
 #echo "256" > /sys/devices/virtual/bdi/93:0/read_ahead_kb
@@ -16,7 +19,8 @@ echo p901>>/data/run.log
 date>>/data/run.log
 
 if [ ! -e /data/system.notfirstrun ]; then
- echo "">/data/swapon.flg
+# echo "">/data/swapon.flg
+ echo "">/data/zram.flg
 fi
 
 if [ -e /data/zram.flg ]; then
