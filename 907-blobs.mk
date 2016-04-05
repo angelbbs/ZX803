@@ -15,37 +15,16 @@ COMMON_PATH := device/softwinner/907
 
 # /system/bin and other
 PRODUCT_COPY_FILES += \
-        $(call find-copy-subdir-files,*,$(COMMON_PATH)/prebuilt/app,system/app) \
-        $(call find-copy-subdir-files,*,$(COMMON_PATH)/prebuilt/config,system/config) \
-        $(call find-copy-subdir-files,*,$(COMMON_PATH)/prebuilt/bin,system/bin) \
-        $(call find-copy-subdir-files,*,$(COMMON_PATH)/prebuilt/xbin,system/xbin) \
-        $(call find-copy-subdir-files,*,$(COMMON_PATH)/prebuilt/usr,system/usr) \
-        $(call find-copy-subdir-files,*,$(COMMON_PATH)/prebuilt/usr/idc,system/usr/idc) \
-        $(call find-copy-subdir-files,*,$(COMMON_PATH)/prebuilt/lib,system/lib) \
-        $(call find-copy-subdir-files,*,$(COMMON_PATH)/prebuilt/lib/modules,system/lib/modules) \
-        $(call find-copy-subdir-files,*,$(COMMON_PATH)/prebuilt/lib/bluez-plugin,system/lib/bluez-plugin) \
-        $(call find-copy-subdir-files,*,$(COMMON_PATH)/prebuilt/etc/init.d,system/etc/init.d) \
-        $(call find-copy-subdir-files,*,$(COMMON_PATH)/prebuilt/etc/wifi.d,system/etc/wifi.d) \
-        $(call find-copy-subdir-files,*,$(COMMON_PATH)/prebuilt/etc/permissions,system/etc/permissions) \
-        $(call find-copy-subdir-files,*,$(COMMON_PATH)/prebuilt/etc/bluetooth,system/etc/bluetooth) \
-        $(call find-copy-subdir-files,*,$(COMMON_PATH)/prebuilt/etc/usb_modeswitch.d,system/etc/usb_modeswitch.d) \
-
+	$(call find-copy-subdir-files,*,$(COMMON_PATH)/prebuilt/bin,system/bin) \
+	$(call find-copy-subdir-files,*,$(COMMON_PATH)/prebuilt/xbin,system/xbin) \
+	$(call find-copy-subdir-files,*,$(COMMON_PATH)/prebuilt/usr/idc,system/usr/idc) \
+	$(call find-copy-subdir-files,*,$(COMMON_PATH)/prebuilt/usr/keylayout,system/usr/keylayout) \
+	$(call find-copy-subdir-files,*,$(COMMON_PATH)/prebuilt/lib/modules,system/lib/modules) \
+	$(call find-copy-subdir-files,*,$(COMMON_PATH)/prebuilt/etc/init.d,system/etc/init.d) \
+	$(call find-copy-subdir-files,*,$(COMMON_PATH)/prebuilt/etc/usb_modeswitch.d,system/etc/usb_modeswitch.d) \
 
 # /system/etc
 PRODUCT_COPY_FILES += \
-<<<<<<< HEAD
-        $(COMMON_PATH)/prebuilt/etc/ppp/ip-down:system/etc/ppp/ip-down \
-        $(COMMON_PATH)/prebuilt/etc/ppp/ip-up:system/etc/ppp/ip-up \
-        $(COMMON_PATH)/prebuilt/etc/ppp/call-pppd:system/etc/ppp/call-pppd \
-        $(COMMON_PATH)/prebuilt/etc/firmware/ath3k-1.fw:system/etc/firmware/ath3k-1.fw \
-        $(COMMON_PATH)/prebuilt/etc/firmware/ath3k-1.fw:system/vendor/firmware/ath3k-1.fw \
-        $(COMMON_PATH)/prebuilt/etc/3g_dongle.cfg:system/etc/3g_dongle.cfg \
-        $(COMMON_PATH)/prebuilt/etc/dbus.conf:system/etc/dbus.conf \
-        $(COMMON_PATH)/prebuilt/etc/apns-conf.xml:system/etc/apns-conf.xml \
-        $(COMMON_PATH)/prebuilt/etc/camera.cfg:system/etc/camera.cfg \
-        $(COMMON_PATH)/prebuilt/etc/gps.conf:system/etc/gps.conf \
-        $(COMMON_PATH)/prebuilt/etc/usb_modeswitch.sh:system/etc/usb_modeswitch.sh \
-=======
 	$(call find-copy-subdir-files,*,$(COMMON_PATH)/prebuilt/etc/ppp,system/etc/ppp) \
 	$(COMMON_PATH)/prebuilt/etc/firmware/ath3k-1.fw:system/etc/firmware/ath3k-1.fw \
 	$(COMMON_PATH)/prebuilt/etc/firmware/ath3k-1.fw:system/vendor/firmware/ath3k-1.fw \
@@ -54,7 +33,6 @@ PRODUCT_COPY_FILES += \
 	$(COMMON_PATH)/prebuilt/etc/camera.cfg:system/etc/camera.cfg \
 	$(COMMON_PATH)/prebuilt/etc/gps.conf:system/etc/gps.conf \
 	$(COMMON_PATH)/prebuilt/etc/usb_modeswitch.sh:system/etc/usb_modeswitch.sh \
->>>>>>> ugers/omni-4.4
 
 # Media files
 PRODUCT_COPY_FILES += \
@@ -65,17 +43,6 @@ PRODUCT_COPY_FILES += \
 
 # /system/lib
 PRODUCT_COPY_FILES += \
-<<<<<<< HEAD
-        $(COMMON_PATH)/prebuilt/lib/egl/libEGL_mali.so:system/lib/egl/libEGL_mali.so \
-        $(COMMON_PATH)/prebuilt/lib/egl/libGLESv1_CM_mali.so:system/lib/egl/libGLESv1_CM_mali.so \
-        $(COMMON_PATH)/prebuilt/lib/egl/libGLESv2_mali.so:system/lib/egl/libGLESv2_mali.so \
-        $(COMMON_PATH)/prebuilt/lib/libsoftwinner-ril.so:system/lib/libsoftwinner-ril.so \
-        $(COMMON_PATH)/prebuilt/lib/libMali.so:system/lib/libMali.so \
-        $(COMMON_PATH)/prebuilt/lib/libUMP.so:system/lib/libUMP.so \
-        $(COMMON_PATH)/prebuilt/lib/libMali.so:obj/lib/libMali.so \
-        $(COMMON_PATH)/prebuilt/lib/libUMP.so:obj/lib/libUMP.so \
-
-=======
 	$(call find-copy-subdir-files,*,$(COMMON_PATH)/prebuilt/lib/egl,system/lib/egl) \
 	$(COMMON_PATH)/prebuilt/lib/libsoftwinner-ril.so:system/lib/libsoftwinner-ril.so \
 	$(COMMON_PATH)/prebuilt/lib/libMali.so:system/lib/libMali.so \
@@ -83,16 +50,13 @@ PRODUCT_COPY_FILES += \
 	$(COMMON_PATH)/prebuilt/lib/libMali.so:obj/lib/libMali.so \
 	$(COMMON_PATH)/prebuilt/lib/libUMP.so:obj/lib/libUMP.so \
 		
->>>>>>> ugers/omni-4.4
 PRODUCT_COPY_FILES += \
-        $(COMMON_PATH)/prebuilt/usr/icu/icudt48l.dat:system/usr/icu/icudt48l.dat \
-        $(COMMON_PATH)/prebuilt/usr/gsensor.cfg:system/usr/gsensor.cfg \
-        $(COMMON_PATH)/prebuilt/usr/keylayout/sun4i-keyboard.kl:system/usr/keylayout/sun4i-keyboard.kl \
-        $(COMMON_PATH)/prebuilt/p901.cfg:system/p901.cfg \
+	$(COMMON_PATH)/prebuilt/usr/icu/icudt48l.dat:system/usr/icu/icudt48l.dat \
+	$(COMMON_PATH)/prebuilt/usr/gsensor.cfg:system/usr/gsensor.cfg \
 
 # temporary prebuilt wpa_supplicant
 PRODUCT_COPY_FILES += \
-        $(COMMON_PATH)/prebuilt/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
+	$(COMMON_PATH)/prebuilt/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
 
 # HACK by turl: Create some intermediate files to link with libMali/libUMP
 $(shell mkdir -p out/target/product/907/obj/SHARED_LIBRARIES/libMali_intermediates)

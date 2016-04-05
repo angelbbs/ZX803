@@ -1,12 +1,8 @@
-ro.sf.lcd_density=240
-# ro.build.characteristics=phone
-qemu.hw.mainkeys=1
-ro.memopt.disable = false
+ro.sf.lcd_density=160
 
-persist.sys.timezone=Europe/Moscow
-persist.sys.language=ru
-persist.sys.country=RU
-
+persist.sys.timezone=Europe/London
+persist.sys.language=en
+persist.sys.country=GB
 
 # CM 11 bootloop fix
 ro.zygote.disable_gl_preload=1
@@ -15,7 +11,7 @@ sys.disable_ext_animation=1
 debug.hwui.render_dirty_regions=false
 
 wifi.interface=wlan0
-wifi.supplicant_scan_interval=15
+wifi.supplicant_scan_interval=60
 
 # Disable StrictMode
 persist.sys.strictmode.visual=0
@@ -40,15 +36,10 @@ ro.display.switch=1
 ro.property.tabletUI=false
 ro.product.firmware=v2.0
 ro.property.fontScale=1.15
-ro.sf.hwrotation=0
-persist.sys.shutdown.mode=hibernate
-ro.config.hw_quickpoweron=true
-ro.ril.enable.sync.time=1
-
 
 # RIL config
-#rild.libpath=/system/lib/libsoftwinner-ril.so
-#rild.libargs=-d /dev/ttyUSB2
+rild.libpath=/system/lib/libsoftwinner-ril.so
+rild.libargs=-d /dev/ttyUSB2
 
 # Hardware info
 ro.sys.cputype=AllWinner A10
@@ -56,5 +47,5 @@ ro.device.cpu=AllWinner A10
 ro.device.gpu=ARM Mali 400MP
 ro.device.rear_cam=2 MP
 ro.device.front_cam=0.3 MP
-ro.device.screen_res=800x480
+ro.device.screen_res=1024x768
 ro.chip_type=a10

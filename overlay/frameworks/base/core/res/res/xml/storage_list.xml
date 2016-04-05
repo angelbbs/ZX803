@@ -40,17 +40,17 @@
              android:storageDescription="@string/storage_internal"
              android:primary="true"
              android:removable="false"
-             android:emulated="false"
-             android:mtpReserve="100"
+             android:emulated="false"  
+             android:mtpReserve="100" 
              android:allowMassStorage="true"
              android:maxFileSize="0"/>
     <!-- Micro SD card -->
     <storage android:mountPoint="/storage/sdcard1"
-             android:storageDescription="@string/storage_sd_card"
+              android:storageDescription="@string/storage_sd_card" 
              android:primary="false"
              android:removable="true"
-             android:emulated="true"
-             android:mtpReserve="0"
+             android:emulated="false"  
+             android:mtpReserve="0" 
              android:allowMassStorage="true"
              android:maxFileSize="0"/>
     <!-- external USB drive -->
@@ -58,7 +58,7 @@
              android:storageDescription="@string/storage_usb"
              android:primary="false"
              android:removable="true"
-             android:emulated="false"
-             android:mtpReserve="0"
+             android:emulated="false"  
+             android:mtpReserve="0" 
              android:maxFileSize="0"/>
 </StorageList>
