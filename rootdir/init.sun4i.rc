@@ -1,6 +1,7 @@
 import init.sun4i.usb.rc
 
 on init
+<<<<<<< HEAD
         export EXTERNAL_STORAGE /storage/sdcard0
         export SECONDARY_STORAGE /storage/sdcard1
         mkdir /mnt/media_rw/sdcard0 0700 media_rw media_rw
@@ -12,12 +13,27 @@ on init
         symlink /storage/sdcard0 /sdcard
         symlink /storage/sdcard0 /mnt/sdcard
         symlink /storage/sdcard1 /mnt/extsd
+=======
+	export EXTERNAL_STORAGE /storage/sdcard0
+	export SECONDARY_STORAGE /storage/sdcard1
+	mkdir /mnt/media_rw/sdcard0 0700 media_rw media_rw
+	mkdir /mnt/media_rw/sdcard1 0700 media_rw media_rw
+	mkdir /mnt/media_rw/usbdisk0 0700 media_rw media_rw
+	mkdir /storage/sdcard0 0770 root root
+	mkdir /storage/sdcard1 0770 root root
+	mkdir /storage/usbdisk0 0770 root root
+	symlink /storage/sdcard0 /sdcard
+	symlink /storage/sdcard0 /mnt/sdcard
+	symlink /storage/sdcard1 /extsd
+	symlink /storage/sdcard1 /mnt/extsd
+>>>>>>> ugers/omni-4.4
 
 on fs
         setprop ro.crypto.umount_sd false
 #        mount_all /fstab.sun4i
    mount ext4 /dev/block/nandd /system wait noatime nodev barrier=0
 
+<<<<<<< HEAD
 # try to mount /data
        wait /dev/block/nande
        mount ext4 /dev/block/nande /data wait noatime nosuid nodev barrier=0
@@ -46,6 +62,10 @@ on fs
 
 
 on boot
+=======
+   	chmod 0770 /data/misc/wifi 
+on boot	
+>>>>>>> ugers/omni-4.4
         # Enable interactive governor
         write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
 
@@ -101,6 +121,7 @@ on boot
         insmod /system/lib/modules/gc2015.ko
         insmod /system/lib/modules/hi253.ko
         insmod /system/lib/modules/hi704.ko
+<<<<<<< HEAD
         insmod /system/lib/modules/sun4i_csi1.ko
         insmod /system/lib/modules/sun4i_csi0.ko
         # usb ethernet drivers
@@ -112,6 +133,20 @@ on boot
         insmod /system/lib/modules/rtl8150.ko
         # other
         insmod /system/lib/modules/cp2526.ko
+=======
+	insmod /system/lib/modules/sun4i_csi1.ko
+	insmod /system/lib/modules/sun4i_csi0.ko
+	# usb ethernet drivers
+	insmod /system/lib/modules/usbnet.ko
+	insmod /system/lib/modules/asix.ko
+	insmod /system/lib/modules/sr9600.ko
+	insmod /system/lib/modules/qf9700.ko
+	insmod /system/lib/modules/mcs7830.ko
+	insmod /system/lib/modules/rtl8150.ko
+	insmod /system/lib/modules/cdc_ether.ko
+	# other
+	insmod /system/lib/modules/cp2526.ko
+>>>>>>> ugers/omni-4.4
         insmod /system/lib/modules/ssd253x_duod.ko
         # misc
         chown system system /sys/class/timed_output/sun4i-vibrator/enable
@@ -127,18 +162,47 @@ on post-fs
         chmod 0660 /sys/class/rfkill/rfkill0/state
         chown bluetooth net_bt_stack /sys/class/rfkill/rfkill1/type
         chown bluetooth net_bt_stack /sys/class/rfkill/rfkill1/state
-        chmod 0660 /sys/class/rfkill/rfkill1/state
+    	chmod 0660 /sys/class/rfkill/rfkill0/state
+    	chmod 0660 /sys/class/rfkill/rfkill0/type
         write /sys/class/rfkill/rfkill0/state 0
         setprop rw.bluetooth.status "0"
 
+    # bluetooth LPM
+    chmod 0220 /proc/bluetooth/sleep/lpm
+    chmod 0220 /proc/bluetooth/sleep/btwrite
+    chown bluetooth net_bt_stack /proc/bluetooth/sleep/lpm
+    chown bluetooth net_bt_stack /proc/bluetooth/sleep/btwrite
+    write /proc/bluetooth/sleep/lpm 1
+
 on post-fs-data
+<<<<<<< HEAD
         mkdir /data/misc/sensors 0777 system system
+=======
+    	# give system access to wpa_supplicant.conf for backup and restore
+    	chmod 0770 /data/misc/wifi
+    	chmod 0660 /data/misc/wifi/wpa_supplicant.conf
+    	mkdir /data/misc/wifi/sockets 0770 wifi wifi
+    	mkdir /data/misc/dhcp 0770 dhcp dhcp
+    	chown dhcp dhcp /data/misc/dhcp
+
+	setprop wifi.interface "wlan0"
+	setprop wlan.interface "wlan0"
+	setprop wlan.driver.status "ok"
+
+	mkdir /data/misc/sensors 0777 system system
+    	mkdir /data/media 0770 media_rw media_rw
+	chown media_rw media_rw /data/media
+>>>>>>> ugers/omni-4.4
         # change back to bluetooth from system
         chown bluetooth net_bt_stack /data/misc/bluetooth
         # Set indication (checked by vold) that we have finished this action
         setprop vold.post_fs_data_done 1
 
+<<<<<<< HEAD
 # FUSE sdcard daemon for rich permissions (runs as media_rw)
+=======
+# virtual sdcard daemon running as media_rw (1023)
+>>>>>>> ugers/omni-4.4
 service fuse_sdcard0 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard0 /storage/sdcard0
     class late_start
     disabled
@@ -151,6 +215,7 @@ service fuse_usbdisk0 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/usbdis
     class late_start
     disabled
 
+<<<<<<< HEAD
 # 1. realtek wifi service
 # 1.1 realtek wifi sta service
 service wpa_supplicant /system/bin/logwrapper /system/bin/wpa_supplicant \
@@ -161,11 +226,19 @@ service wpa_supplicant /system/bin/logwrapper /system/bin/wpa_supplicant \
     #   after setting up the capabilities required for WEXT
     #   user wifi
     #   group wifi inet keystore
+=======
+# wifi related service
+service wpa_supplicant /system/bin/wpa_supplicant -Dnl80211 -iwlan0 \
+	-c /data/misc/wifi/wpa_supplicant.conf -e/data/misc/wifi/entropy.bin \
+	-O/data/misc/wifi/sockets -g@android:wpa_wlan0
+>>>>>>> ugers/omni-4.4
     class main
-    socket wpa_wlan0 dgram 660 wifi wifi
+    socket wpa_wlan0 dgram 0660 wifi wifi
+    group system wifi inet
     disabled
     oneshot
 
+<<<<<<< HEAD
 # 1.2 realtek wifi sta p2p concurrent service
 service p2p_supplicant /system/bin/logwrapper /system/bin/wpa_supplicant \
         -ip2p0 -Dnl80211 -c/data/misc/wifi/p2p_supplicant.conf \
@@ -177,6 +250,16 @@ service p2p_supplicant /system/bin/logwrapper /system/bin/wpa_supplicant \
         socket wpa_wlan0 dgram 660 wifi wifi
         disabled
         oneshot
+=======
+service p2p_supplicant /system/bin/wpa_supplicant -Dnl80211 -iwlan0 \
+	-c /data/misc/wifi/wpa_supplicant.conf -e/data/misc/wifi/entropy.bin \
+	-O/data/misc/wifi/sockets -g@android:wpa_wlan0
+    class main
+    socket wpa_wlan0 dgram 0660 wifi wifi
+    group system wifi inet
+    disabled
+    oneshot
+>>>>>>> ugers/omni-4.4
 
 # dhcpcd daemons
 service dhcpcd_wlan0 /system/bin/dhcpcd -aABDKL
@@ -235,3 +318,14 @@ service  sensors  /system/bin/busybox  sh  /system/bin/sensors.sh
 
 on property:sys.sensors=1
     start sensors
+<<<<<<< HEAD
+=======
+
+service memsicd /system/bin/logwrapper /system/bin/memsicd
+   class troy
+   oneshot
+
+on property:sys.boot_completed=1
+    start ril-daemon
+    start u3gmonitor
+>>>>>>> ugers/omni-4.4

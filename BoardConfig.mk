@@ -50,6 +50,8 @@ BOARD_HAVE_BLUETOOTH_BCM := true
 BLUETOOTH_HCI_USE_USB := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/softwinner/907/hardware/bluetooth
 BOARD_BLUEDROID_VENDOR_CONF := device/softwinner/907/hardware/bluetooth/vnd_generic_usb.txt
+BOARD_BLUETOOTH_DOES_NOT_USE_RFKILL := true
+TARGET_NEEDS_BLUETOOTH_INIT_DELAY := true
 BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/softwinner/907/hardware/include/vibrator.c
 
 # Partition sizes; must be in decimal
@@ -83,32 +85,33 @@ CEDARX_CHIP_VERSION := F23
 CEDARX_USE_SWAUDIO := N
 
 # CWM Recovery
-BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/softwinner/907/recovery/recovery_keys.c
-BOARD_UMS_LUNFILE := "/sys/class/android_usb/android0/f_mass_storage/lun/file"
-BOARD_UMS_2ND_LUNFILE := "/sys/class/android_usb/android0/f_mass_storage/lun1/file"
-RECOVERY_FSTAB_VERSION := 2
-BOARD_RECOVERY_SWIPE := true
-TARGET_RECOVERY_FSTAB := device/softwinner/907/rootdir/fstab.sun4i
+#BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/softwinner/907/recovery/recovery_keys.c
+#BOARD_UMS_LUNFILE := "/sys/class/android_usb/android0/f_mass_storage/lun/file"
+#BOARD_UMS_2ND_LUNFILE := "/sys/class/android_usb/android0/f_mass_storage/lun1/file"
+#RECOVERY_FSTAB_VERSION := 2
+#BOARD_RECOVERY_SWIPE := true
+#TARGET_RECOVERY_FSTAB := device/softwinner/907/rootdir/fstab.sun4i
+#BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
 #TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
 #TARGET_RECOVERY_UI_LIB := librecovery_ui_crane_evb
 #TARGET_RECOVERY_UPDATER_LIBS :=
 
 # TWRP recovery
-#BOARD_HAS_SDCARD_INTERNAL := true
-#TARGET_RECOVERY_PIXEL_FORMAT := "RGB565"
-#DEVICE_RESOLUTION := 1024x768
-#TW_FLASH_FROM_STORAGE := true
-#TW_NO_REBOOT_BOOTLOADER := true
-#TW_HAS_DUAL_STORAGE := true
+BOARD_HAS_SDCARD_INTERNAL := true
+TARGET_RECOVERY_PIXEL_FORMAT := "RGB565"
+DEVICE_RESOLUTION := 1024x768
+TW_FLASH_FROM_STORAGE := true
+TW_NO_REBOOT_BOOTLOADER := true
+TW_HAS_DUAL_STORAGE := true
 #TWRP_EVENT_LOGGING := true
-#TW_INTERNAL_STORAGE_PATH := "/emmc"
-#TW_INTERNAL_STORAGE_MOUNT_POINT := "emmc"
-#TW_EXTERNAL_STORAGE_PATH := "/sdcard"
-#TW_EXTERNAL_STORAGE_MOUNT_POINT := "sdcard"
-#TWHAVE_SELINUX := true
+TW_INTERNAL_STORAGE_PATH := "/emmc"
+TW_INTERNAL_STORAGE_MOUNT_POINT := "emmc"
+TW_EXTERNAL_STORAGE_PATH := "/sdcard"
+TW_EXTERNAL_STORAGE_MOUNT_POINT := "sdcard"
+TWHAVE_SELINUX := true
 #BOARD_UMS_LUNFILE := "/sys/class/android_usb/android0/f_mass_storage/lun/file"
 #BOARD_UMS_2ND_LUNFILE := "/sys/class/android_usb/android0/f_mass_storage/lun1/file"
-#TARGET_RECOVERY_FSTAB := device/softwinner/907/rootdir/twrp.fstab
+TARGET_RECOVERY_FSTAB := device/softwinner/907/rootdir/fstab.sun4i
 
 # Vold stuff
 BOARD_VOLD_MAX_PARTITIONS := 20
@@ -127,30 +130,34 @@ TARGET_HARDWARE_INCLUDE := $(TOP)/device/softwinner/907/hardware/include
 TARGET_PROVIDES_INIT_RC := true
 
 # Wifi stuff
+<<<<<<< HEAD
 CONFIG_CTRL_IFACE                := true
+=======
+>>>>>>> ugers/omni-4.4
 BOARD_WIFI_VENDOR                := realtek
 WPA_SUPPLICANT_VERSION           := VER_0_8_X
 BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
-CONFIG_DRIVER_WEXT               :=y
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_rtl
 BOARD_HOSTAPD_DRIVER             := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_rtl
 BOARD_WLAN_DEVICE                := rtl8192cu
 SW_BOARD_USR_WIFI                := rtl8192cu
 
-WIFI_DRIVER               := rtl8192cu
 WIFI_DRIVER_MODULE_NAME   := "8192cu"
-WIFI_DRIVER_FW_PATH_STA   := none
 WIFI_DRIVER_MODULE_PATH   := "/system/lib/modules/8192cu.ko"
+<<<<<<< HEAD
 WIFI_DRIVER_MODULE_ARG    := "ifname=wlan0"
+=======
+>>>>>>> ugers/omni-4.4
 
+WIFI_DRIVER_MODULE_ARG    := ""
 WIFI_FIRMWARE_LOADER      := ""
 WIFI_DRIVER_FW_PATH_STA   := ""
 WIFI_DRIVER_FW_PATH_AP    := ""
 WIFI_DRIVER_FW_PATH_P2P   := ""
 WIFI_DRIVER_FW_PATH_PARAM := ""
 
-TARGET_CUSTOM_WIFI := hardware/realtek/wlan/libhardware_legacy/wifi/wifi_realtek.c
+#TARGET_CUSTOM_WIFI := hardware/realtek/wlan/libhardware_legacy/wifi/wifi_realtek.c
 
 # Selinux
 BOARD_SEPOLICY_DIRS += \
